@@ -80,7 +80,7 @@ const Home = () => {
         
         <div className={`relative z-10 text-center px-4 max-w-6xl mx-auto fade-in ${isVisible ? 'visible' : ''}`}>
           {/* Cinnara Royal Sticker/Logo */}
-          <div className="mb-8 flex justify-center">
+          <div className="flex justify-center mt-[19px] mb-[19px]">
             <div className="relative">
               <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-dull-yellow">
                 <div className="text-center">
@@ -128,7 +128,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Company Description */}
       <section className="py-16 lg:py-24 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-16">
@@ -167,7 +166,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Product Range */}
       <section className="py-16 lg:py-24 bg-warm-cream">
         <div className="max-w-7xl mx-auto px-4">
@@ -194,7 +192,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Certifications */}
       <section className="py-16 lg:py-24 px-4 max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -219,7 +216,6 @@ const Home = () => {
           })}
         </div>
       </section>
-
       {/* Image Gallery Preview */}
       <section className="py-16 lg:py-24 bg-soft-cream">
         <div className="max-w-7xl mx-auto px-4">
@@ -244,7 +240,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* FAQ */}
       <section className="py-16 lg:py-24 px-4 max-w-4xl mx-auto">
         <div className="text-center mb-16">
