@@ -3,6 +3,7 @@ import { Crown, Leaf, IdCard, Shield, Globe, Heart, Check, ArrowRight } from "lu
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import FAQ from "@/components/FAQ";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,10 +41,12 @@ const Home = () => {
   ];
 
   const certifications = [
-    { icon: Leaf, title: "Organic Certified", description: "USDA Organic Standards", color: "text-green-600" },
-    { icon: IdCard, title: "ISO 22000", description: "Food Safety Management", color: "text-blue-600" },
-    { icon: Globe, title: "Fair Trade", description: "Ethical Sourcing", color: "text-purple-600" },
-    { icon: Shield, title: "HACCP", description: "Food Safety Standards", color: "text-red-600" }
+    { icon: Leaf, title: "USDA Organic Certified", description: "Our organic products meet strict USDA organic standards, ensuring no synthetic pesticides or fertilizers.", color: "bg-green-100 text-green-600" },
+    { icon: IdCard, title: "ISO 22000:2018", description: "Food safety management system certification ensuring the highest standards of food safety.", color: "bg-blue-100 text-blue-600" },
+    { icon: Globe, title: "Fair Trade Certified", description: "Supporting fair wages and sustainable practices for our farming communities in Sri Lanka.", color: "bg-purple-100 text-purple-600" },
+    { icon: Shield, title: "HACCP Compliant", description: "Hazard Analysis Critical Control Points system ensures food safety throughout our process.", color: "bg-red-100 text-red-600" },
+    { icon: Heart, title: "GMP Certified", description: "Good Manufacturing Practices certification ensuring consistent quality and safety.", color: "bg-yellow-100 text-yellow-600" },
+    { icon: Leaf, title: "Rainforest Alliance", description: "Promoting sustainable agriculture and protecting biodiversity in our farming practices.", color: "bg-indigo-100 text-indigo-600" }
   ];
 
   const galleryImages = [
@@ -192,7 +195,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Certifications */}
+      {/* Certifications Carousel */}
       <section className="py-16 lg:py-24 px-4 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="section-heading">
@@ -203,18 +206,34 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {certifications.map((cert, index) => {
-            const Icon = cert.icon;
-            return (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
-                <Icon className={`w-12 h-12 ${cert.color} mx-auto mb-4`} />
-                <h3 className="font-semibold text-deep-brown mb-2">{cert.title}</h3>
-                <p className="text-sm text-deep-brown/70">{cert.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {certifications.map((cert, index) => {
+              const Icon = cert.icon;
+              return (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <div className="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow h-full">
+                      <div className={`w-20 h-20 ${cert.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
+                        <Icon className="w-8 h-8" />
+                      </div>
+                      <h3 className="font-display text-xl font-bold text-deep-brown mb-4">{cert.title}</h3>
+                      <p className="text-deep-brown/70 leading-relaxed">{cert.description}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious className="left-4" />
+          <CarouselNext className="right-4" />
+        </Carousel>
       </section>
       {/* Image Gallery Preview */}
       <section className="py-16 lg:py-24 bg-soft-cream">
