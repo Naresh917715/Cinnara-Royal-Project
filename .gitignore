@@ -23,25 +23,6 @@ build/
 
 # OS-specific files
 .DS_Store
-Thumbs.db
-
-# Logs
-logs/
-*.log
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# Coverage reports
-coverage/
-
-# Others
-*.local
-*.cache/
-.cache/
-*.tgz
+server/public
+vite.config.ts.*
+*.tar.gz
