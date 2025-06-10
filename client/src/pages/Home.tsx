@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import FAQ from "@/components/FAQ";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import YouTubePopup from "@/components/YouTubePopup";
+import { PRODUCTS } from "@/constants";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,11 +35,9 @@ const Home = () => {
       // Check if user has scrolled to bottom (within 100px)
       if (scrollTop + clientHeight >= scrollHeight - 100) {
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          setShowYouTubePopup(true);
-          setHasShownPopup(true);
-          sessionStorage.setItem('youtubePopupShown', 'true');
-        }, 7000);
+        setShowYouTubePopup(true);
+        setHasShownPopup(true);
+        sessionStorage.setItem('youtubePopupShown', 'true');
       }
     };
 
@@ -49,33 +48,7 @@ const Home = () => {
     };
   }, [hasShownPopup]);
 
-  const products = [
-    {
-      title: "Ceylon Cinnamon Sticks",
-      description: "Hand-harvested true cinnamon quills with delicate sweetness and paper-thin texture.",
-      image: "https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-    },
-    {
-      title: "Ceylon Cinnamon Powder",
-      description: "Finely ground pure Ceylon cinnamon perfect for baking and culinary excellence.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-    },
-    {
-      title: "Ceylon Cinnamon Soap",
-      description: "Luxurious handcrafted soap infused with pure Ceylon cinnamon for natural skincare.",
-      image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-    },
-    {
-      title: "Cinnamon Induced Tea",
-      description: "Premium tea blend enhanced with authentic Ceylon cinnamon for wellness and flavor.",
-      image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-    },
-    {
-      title: "Cinnamon Oil Extract",
-      description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use.",
-      image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-    }
-  ];
+  const products = PRODUCTS;
 
   const certifications = [
     { icon: Leaf, title: "USDA Organic Certified", description: "Our organic products meet strict USDA organic standards, ensuring no synthetic pesticides or fertilizers.", color: "bg-green-100 text-green-600" },
@@ -135,26 +108,26 @@ const Home = () => {
             </div>
           </div>
 
-          <h1 className="font-display text-4xl lg:text-6xl xl:text-7xl font-bold text-deep-brown mb-6 leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-deep-brown mb-4 sm:mb-6 leading-tight">
             World's Finest
             <span className="text-warm-brown block">Ceylon Cinnamon</span>
           </h1>
 
-          <p className="text-lg lg:text-xl text-deep-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-deep-brown/80 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
             Proudly grown and hand-harvested in Sri Lanka, bringing you the authentic taste of "True Cinnamon" 
             with centuries-old artisanal craftsmanship.
           </p>
 
           {/* Product Display */}
-          <div className="flex justify-center items-center space-x-4 lg:space-x-8 mb-12">
+          <div className="flex justify-center items-center space-x-2 sm:space-x-4 lg:space-x-8 mb-8 sm:mb-12">
             <div className="transform rotate-12 hover:rotate-6 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Ceylon Cinnamon Sticks" className="w-16 h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
+              <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
             </div>
             <div className="transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Ceylon Cinnamon Powder" className="w-20 h-20 lg:w-28 lg:h-28 object-cover rounded-full shadow-lg border-4 border-white" />
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Ceylon Cinnamon Powder" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-cover rounded-full shadow-lg border-4 border-white" />
             </div>
             <div className="transform rotate-6 hover:rotate-3 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Cinnamon Tea" className="w-16 h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
+              <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Cinnamon Tea" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
             </div>
           </div>
 
@@ -219,7 +192,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {products.map((product, index) => (
               <div key={`product-${product.title}-${index}`} className="w-full">
                 <ProductCard
@@ -349,13 +322,13 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {galleryImages.map((image, index) => (
               <img 
                 key={index}
                 src={image} 
                 alt={`Gallery image ${index + 1}`}
-                className="w-full h-64 object-cover rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer" 
+                className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg sm:rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer" 
               />
             ))}
           </div>

@@ -34,10 +34,8 @@ const Contact = () => {
         !hasShownPopup
       ) {
         // Scrolled to bottom
-        setTimeout(() => {
-          setShowYouTubePopup(true);
-          sessionStorage.setItem('hasShownYouTubePopup', 'true');
-        }, 7000);
+        setShowYouTubePopup(true);
+        sessionStorage.setItem('hasShownYouTubePopup', 'true');
       }
     };
 

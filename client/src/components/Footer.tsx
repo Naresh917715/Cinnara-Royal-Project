@@ -21,12 +21,12 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Our Products", href: "/products" },
-    { name: "Information", href: "/information" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Gallery", href: "/gallery" },
+    { name: "Home", to: "/" },
+    { name: "About Us", to: "/about" },
+    { name: "Our Products", to: "/products" },
+    { name: "Information", to: "/information" },
+    { name: "Contact Us", to: "/contact" },
+    { name: "Gallery", to: "/gallery" },
   ];
 
   const socialLinks = [
@@ -79,7 +79,7 @@ const Footer = () => {
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    to={link.to}
                     className="text-white/80 hover:text-dull-yellow transition-colors"
                   >
                     {link.name}
@@ -120,13 +120,13 @@ const Footer = () => {
             © 2024 Cinnara Royal Pvt. Limited. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <Link href="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
               Terms of Service
             </Link>
-            <Link href="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
               Cookie Policy
             </Link>
           </div>
