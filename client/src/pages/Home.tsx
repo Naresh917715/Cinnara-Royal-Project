@@ -4,13 +4,50 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import FAQ from "@/components/FAQ";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import YouTubePopup from "@/components/YouTubePopup";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [showYouTubePopup, setShowYouTubePopup] = useState(false);
+  const [hasShownPopup, setHasShownPopup] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Check if popup was already shown in this session
+    const popupShown = sessionStorage.getItem('youtubePopupShown');
+    if (popupShown) {
+      setHasShownPopup(true);
+    }
   }, []);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
+    const handleScroll = () => {
+      if (hasShownPopup) return;
+      
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      
+      // Check if user has scrolled to bottom (within 100px)
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          setShowYouTubePopup(true);
+          setHasShownPopup(true);
+          sessionStorage.setItem('youtubePopupShown', 'true');
+        }, 7000);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [hasShownPopup]);
 
   const products = [
     {
@@ -85,12 +122,12 @@ const Home = () => {
           {/* Cinnara Royal Sticker/Logo */}
           <div className="flex justify-center mt-[19px] mb-[19px]">
             <div className="relative">
-              <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-dull-yellow">
-                <div className="text-center">
-                  <h1 className="font-display font-bold text-lg lg:text-2xl text-deep-brown mb-1">CINNARA</h1>
-                  <h2 className="font-display font-bold text-lg lg:text-2xl text-warm-brown mb-1">ROYAL</h2>
-                  <p className="font-script text-xs lg:text-sm text-deep-brown">Ceylon Cinnamon</p>
-                </div>
+              <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-dull-yellow overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200" 
+                  alt="Ceylon Cinnamon Sticks" 
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               <div className="absolute -top-2 -right-2 w-6 h-6 lg:w-8 lg:h-8 bg-dull-yellow rounded-full flex items-center justify-center">
                 <Crown className="text-warm-brown w-3 h-3 lg:w-4 lg:h-4" />
@@ -333,6 +370,12 @@ const Home = () => {
 
         <FAQ items={faqItems} />
       </section>
+
+      {/* YouTube Popup */}
+      <YouTubePopup 
+        isVisible={showYouTubePopup} 
+        onClose={() => setShowYouTubePopup(false)} 
+      />
     </div>
   );
 };

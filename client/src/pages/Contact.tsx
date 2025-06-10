@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { validateEmail } from "@/lib/utils";
+import YouTubePopup from "@/components/YouTubePopup";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +21,36 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [showYouTubePopup, setShowYouTubePopup] = useState(false);
+
+  useEffect(() => {
+    const hasShownPopup = sessionStorage.getItem('hasShownYouTubePopup');
+
+    const scrollHandler = () => {
+      if (
+        document.documentElement.scrollHeight -
+          (window.innerHeight + document.documentElement.scrollTop) <=
+        10 &&
+        !hasShownPopup
+      ) {
+        // Scrolled to bottom
+        setTimeout(() => {
+          setShowYouTubePopup(true);
+          sessionStorage.setItem('hasShownYouTubePopup', 'true');
+        }, 7000);
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateEmail(formData.email)) {
       toast({
         title: "Invalid Email",
@@ -34,15 +61,15 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     toast({
       title: "Message Sent!",
       description: "Thank you for your message! We will get back to you soon.",
     });
-    
+
     setFormData({
       firstName: "",
       lastName: "",
@@ -51,7 +78,7 @@ const Contact = () => {
       subject: "",
       message: ""
     });
-    
+
     setIsSubmitting(false);
   };
 
@@ -150,7 +177,7 @@ const Contact = () => {
             <Card className="bg-white shadow-lg">
               <CardContent className="p-8">
                 <h3 className="font-display text-2xl font-bold text-deep-brown mb-6">Send us a Message</h3>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -178,7 +205,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="email" className="text-deep-brown font-semibold mb-2">Email Address</Label>
                     <Input
@@ -191,7 +218,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="phone" className="text-deep-brown font-semibold mb-2">Phone Number</Label>
                     <Input
@@ -203,7 +230,7 @@ const Contact = () => {
                       className="focus:ring-warm-brown focus:border-warm-brown"
                     />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="subject" className="text-deep-brown font-semibold mb-2">Subject</Label>
                     <Select value={formData.subject} onValueChange={(value) => handleInputChange("subject", value)}>
@@ -219,7 +246,7 @@ const Contact = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="message" className="text-deep-brown font-semibold mb-2">Message</Label>
                     <Textarea
@@ -232,7 +259,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  
+
                   <Button
                     type="submit"
                     className="w-full btn-primary"
@@ -246,6 +273,12 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* YouTube Popup */}
+      <YouTubePopup 
+        isVisible={showYouTubePopup} 
+        onClose={() => setShowYouTubePopup(false)} 
+      />
     </div>
   );
 };

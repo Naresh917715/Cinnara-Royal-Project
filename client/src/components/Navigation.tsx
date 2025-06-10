@@ -29,6 +29,23 @@ const Navigation = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const scrollToSection = (href: string) => {
+    if (href === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    
+    // For other pages, navigate first then scroll to top
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+  };
+
+  const handleNavClick = (href: string) => {
+    scrollToSection(href);
+    setIsOpen(false);
+  };
+
   return (
     <nav
       className={cn(
@@ -63,6 +80,7 @@ const Navigation = () => {
                   "text-deep-brown hover:text-warm-brown transition-colors font-medium",
                   location === item.href && "text-warm-brown"
                 )}
+                onClick={() => handleNavClick(item.href)}
               >
                 {item.name}
               </Link>
@@ -93,7 +111,7 @@ const Navigation = () => {
                   "block py-2 text-deep-brown hover:text-warm-brown transition-colors",
                   location === item.href && "text-warm-brown"
                 )}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick(item.href)}
               >
                 {item.name}
               </Link>

@@ -100,9 +100,7 @@ const Products = () => {
                         );
                       })}
                     </div>
-                    <Button className="btn-primary self-start">
-                      Learn More
-                    </Button>
+                    
                   </div>
                 </div>
               </div>
