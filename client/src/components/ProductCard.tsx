@@ -1,7 +1,7 @@
 
+import React, { useState } from "react";
 import { ArrowRight, ChevronDown, Leaf, Shield, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
 
 interface ProductCardProps {
   title: string;
@@ -10,8 +10,8 @@ interface ProductCardProps {
   onClick?: () => void;
 }
 
-const ProductCard = ({ title, description, image }: ProductCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const ProductCard: React.FC<ProductCardProps> = ({ title, description, image }) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const getProductDetails = (title: string) => {
     const details = {
@@ -66,28 +66,41 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
 
   const productDetails = getProductDetails(title);
 
-  const handleToggle = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsExpanded(!isExpanded);
+  const toggleExpansion = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setIsExpanded(prev => !prev);
   };
 
   return (
-    <Card className="product-card">
-      <img src={image} alt={title} className="product-card-image" />
+    <Card className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2">
+      <img 
+        src={image} 
+        alt={title} 
+        className="w-full h-64 object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500" 
+      />
       <CardContent className="p-6">
         <h3 className="font-display text-xl font-bold text-deep-brown mb-3">{title}</h3>
         <p className="text-deep-brown/70 mb-4">{description}</p>
         
         <button 
-          onClick={handleToggle}
-          className="flex justify-between items-center w-full text-left bg-transparent border-none p-0 cursor-pointer"
+          onClick={toggleExpansion}
+          className="flex justify-between items-center w-full text-left bg-transparent border-none p-0 cursor-pointer focus:outline-none"
+          type="button"
         >
           <span className="text-warm-brown font-semibold">Learn More</span>
-          <ChevronDown className={`text-warm-brown transition-transform duration-300 w-5 h-5 ${isExpanded ? 'rotate-180' : ''}`} />
+          <ChevronDown 
+            className={`text-warm-brown transition-transform duration-300 w-5 h-5 ${
+              isExpanded ? 'rotate-180' : 'rotate-0'
+            }`} 
+          />
         </button>
 
-        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+        <div 
+          className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            isExpanded ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+          }`}
+        >
           <div className="border-t border-gray-200 pt-4 space-y-4">
             <div>
               <h4 className="font-semibold text-deep-brown mb-2">Key Features</h4>
@@ -95,7 +108,7 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
                 {productDetails.features.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <div key={index} className="flex items-center space-x-2">
+                    <div key={`feature-${index}`} className="flex items-center space-x-2">
                       <Icon className="text-warm-brown w-4 h-4" />
                       <span className="text-sm text-deep-brown/80">{feature.text}</span>
                     </div>
