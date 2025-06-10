@@ -35,13 +35,16 @@ const Home = () => {
       // Check if user has scrolled to bottom (within 100px)
       if (scrollTop + clientHeight >= scrollHeight - 100) {
         clearTimeout(scrollTimeout);
-        setShowYouTubePopup(true);
-        setHasShownPopup(true);
-        sessionStorage.setItem('youtubePopupShown', 'true');
+        // Add small delay to ensure smooth scrolling completion
+        scrollTimeout = setTimeout(() => {
+          setShowYouTubePopup(true);
+          setHasShownPopup(true);
+          sessionStorage.setItem('youtubePopupShown', 'true');
+        }, 200);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);

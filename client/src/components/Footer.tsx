@@ -20,6 +20,13 @@ const Footer = () => {
     }
   };
 
+  const handleNavigation = (to: string) => {
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   const quickLinks = [
     { name: "Home", to: "/" },
     { name: "About Us", to: "/about" },
@@ -81,6 +88,7 @@ const Footer = () => {
                   <Link
                     to={link.to}
                     className="text-white/80 hover:text-dull-yellow transition-colors"
+                    onClick={() => handleNavigation(link.to)}
                   >
                     {link.name}
                   </Link>
@@ -120,13 +128,25 @@ const Footer = () => {
             © 2024 Cinnara Royal Pvt. Limited. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link 
+              to="/information" 
+              className="text-white/60 hover:text-dull-yellow transition-colors"
+              onClick={() => handleNavigation('/information')}
+            >
               Privacy Policy
             </Link>
-            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link 
+              to="/information" 
+              className="text-white/60 hover:text-dull-yellow transition-colors"
+              onClick={() => handleNavigation('/information')}
+            >
               Terms of Service
             </Link>
-            <Link to="/information" className="text-white/60 hover:text-dull-yellow transition-colors">
+            <Link 
+              to="/information" 
+              className="text-white/60 hover:text-dull-yellow transition-colors"
+              onClick={() => handleNavigation('/information')}
+            >
               Cookie Policy
             </Link>
           </div>

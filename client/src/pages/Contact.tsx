@@ -25,24 +25,31 @@ const Contact = () => {
 
   useEffect(() => {
     const hasShownPopup = sessionStorage.getItem('hasShownYouTubePopup');
+    let scrollTimeout: NodeJS.Timeout;
 
     const scrollHandler = () => {
-      if (
-        document.documentElement.scrollHeight -
-          (window.innerHeight + document.documentElement.scrollTop) <=
-        10 &&
-        !hasShownPopup
-      ) {
-        // Scrolled to bottom
-        setShowYouTubePopup(true);
-        sessionStorage.setItem('hasShownYouTubePopup', 'true');
+      if (hasShownPopup) return;
+      
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      
+      // Check if user has scrolled to bottom (within 100px)
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
+        clearTimeout(scrollTimeout);
+        // Add small delay to ensure smooth scrolling completion
+        scrollTimeout = setTimeout(() => {
+          setShowYouTubePopup(true);
+          sessionStorage.setItem('hasShownYouTubePopup', 'true');
+        }, 200);
       }
     };
 
-    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', scrollHandler);
+      clearTimeout(scrollTimeout);
     };
   }, []);
 

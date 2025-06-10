@@ -8,6 +8,15 @@ interface YouTubePopupProps {
 }
 
 const YouTubePopup = ({ isVisible, onClose }: YouTubePopupProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isVisible && !isLoaded) {
+      // Preload the iframe when popup becomes visible
+      setIsLoaded(true);
+    }
+  }, [isVisible, isLoaded]);
+
   if (!isVisible) return null;
 
   return (
@@ -24,15 +33,22 @@ const YouTubePopup = ({ isVisible, onClose }: YouTubePopupProps) => {
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
-        <div className="aspect-video">
+        <div className="aspect-video relative">
+          {!isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-warm-brown"></div>
+            </div>
+          )}
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1"
             title="Ceylon Cinnamon Documentary"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            loading="eager"
+            onLoad={() => setIsLoaded(true)}
           ></iframe>
         </div>
       </div>
