@@ -1,3 +1,4 @@
+
 import { ArrowRight, ChevronDown, Leaf, Shield, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
@@ -65,6 +66,12 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
 
   const productDetails = getProductDetails(title);
 
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <Card className="product-card">
       <img src={image} alt={title} className="product-card-image" />
@@ -73,8 +80,8 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
         <p className="text-deep-brown/70 mb-4">{description}</p>
         
         <button 
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="flex justify-between items-center w-full text-left"
+          onClick={handleToggle}
+          className="flex justify-between items-center w-full text-left bg-transparent border-none p-0 cursor-pointer"
         >
           <span className="text-warm-brown font-semibold">Learn More</span>
           <ChevronDown className={`text-warm-brown transition-transform duration-300 w-5 h-5 ${isExpanded ? 'rotate-180' : ''}`} />
