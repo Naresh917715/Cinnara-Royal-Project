@@ -124,7 +124,7 @@ const Home = () => {
             <div className="relative">
               <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-dull-yellow overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200" 
+                  src='/cinnara.png' 
                   alt="Ceylon Cinnamon Sticks" 
                   className="w-full h-full object-cover rounded-full"
                 />
