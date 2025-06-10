@@ -227,33 +227,74 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Side - Certification Card */}
+            {/* Right Side - Certification Carousel */}
             <div className="flex justify-center">
-              <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
-                <div className="text-center space-y-6">
-                  {/* Certification Badge */}
-                  <div className="w-20 h-20 bg-warm-brown rounded-full flex items-center justify-center mx-auto">
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                      <div className="w-4 h-4 bg-warm-brown rounded-full"></div>
+              <Carousel className="w-full max-w-md">
+                <CarouselContent>
+                  {/* Main Certification Card */}
+                  <CarouselItem>
+                    <div className="bg-white rounded-2xl shadow-xl p-8">
+                      <div className="text-center space-y-6">
+                        {/* Certification Badge */}
+                        <div className="w-20 h-20 bg-warm-brown rounded-full flex items-center justify-center mx-auto">
+                          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                            <div className="w-4 h-4 bg-warm-brown rounded-full"></div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h3 className="font-display text-2xl font-bold text-deep-brown mb-4">
+                            Ceylon Cinnamon Authenticity
+                          </h3>
+                          <p className="text-deep-brown/70 leading-relaxed mb-6">
+                            Certified authentic Ceylon cinnamon by the Sri Lanka Export Development Board, guaranteeing true Cinnamomum verum.
+                          </p>
+                        </div>
+
+                        {/* Certificate Details */}
+                        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                          <span className="text-deep-brown/70 font-medium">Sri Lanka EDB</span>
+                          <span className="text-deep-brown/70 font-medium">2018</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </CarouselItem>
 
-                  <div>
-                    <h3 className="font-display text-2xl font-bold text-deep-brown mb-4">
-                      Ceylon Cinnamon Authenticity
-                    </h3>
-                    <p className="text-deep-brown/70 leading-relaxed mb-6">
-                      Certified authentic Ceylon cinnamon by the Sri Lanka Export Development Board, guaranteeing true Cinnamomum verum.
-                    </p>
-                  </div>
+                  {/* Additional Certification Cards */}
+                  {certifications.slice(0, 5).map((cert, index) => {
+                    const Icon = cert.icon;
+                    return (
+                      <CarouselItem key={index}>
+                        <div className="bg-white rounded-2xl shadow-xl p-8">
+                          <div className="text-center space-y-6">
+                            {/* Certification Badge */}
+                            <div className={`w-20 h-20 ${cert.color} rounded-full flex items-center justify-center mx-auto`}>
+                              <Icon className="w-8 h-8" />
+                            </div>
 
-                  {/* Certificate Details */}
-                  <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-                    <span className="text-deep-brown/70 font-medium">Sri Lanka EDB</span>
-                    <span className="text-deep-brown/70 font-medium">2018</span>
-                  </div>
-                </div>
-              </div>
+                            <div>
+                              <h3 className="font-display text-2xl font-bold text-deep-brown mb-4">
+                                {cert.title}
+                              </h3>
+                              <p className="text-deep-brown/70 leading-relaxed mb-6">
+                                {cert.description}
+                              </p>
+                            </div>
+
+                            {/* Certificate Details */}
+                            <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                              <span className="text-deep-brown/70 font-medium">Certified</span>
+                              <span className="text-deep-brown/70 font-medium">2024</span>
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-white/80 hover:bg-white border-warm-brown/20" />
+                <CarouselNext className="right-4 bg-white/80 hover:bg-white border-warm-brown/20" />
+              </Carousel>
             </div>
           </div>
         </div>
