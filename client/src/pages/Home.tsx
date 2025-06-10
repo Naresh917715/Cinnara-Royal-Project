@@ -80,7 +80,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-hero-pattern">
         <div className="absolute inset-0 hero-gradient"></div>
-        
+
         <div className={`relative z-10 text-center px-4 max-w-6xl mx-auto fade-in ${isVisible ? 'visible' : ''}`}>
           {/* Cinnara Royal Sticker/Logo */}
           <div className="flex justify-center mt-[19px] mb-[19px]">
@@ -102,7 +102,7 @@ const Home = () => {
             World's Finest
             <span className="text-warm-brown block">Ceylon Cinnamon</span>
           </h1>
-          
+
           <p className="text-lg lg:text-xl text-deep-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
             Proudly grown and hand-harvested in Sri Lanka, bringing you the authentic taste of "True Cinnamon" 
             with centuries-old artisanal craftsmanship.
@@ -146,7 +146,7 @@ const Home = () => {
             alt="Ceylon Cinnamon Plantation in Sri Lanka" 
             className="rounded-2xl shadow-2xl" 
           />
-          
+
           <div className="space-y-6">
             <p className="text-lg text-deep-brown/80 leading-relaxed">
               We warmly welcome you to Cinnara Royal, where the artistry of cinnamon reaches perfection. 
@@ -154,14 +154,14 @@ const Home = () => {
               more than just a cinnamon company—we are a brand passionate about capturing the authentic 
               flavors and captivating aromas of our motherland and sharing them with the world.
             </p>
-            
+
             <p className="text-lg text-deep-brown/80 leading-relaxed">
               Imagine the delightful experience of opening a freshly packed box of cinnamon—this is the 
               essence of what we aim to deliver. Our diverse product range proudly features both organic 
               and conventional Pure Ceylon Cinnamon Quills, Cinnamon Powder, Cinnamon Soap, and exquisite 
               Cinnamon Oil extracts.
             </p>
-            
+
             <p className="text-lg text-deep-brown/80 leading-relaxed">
               Each product is meticulously sourced directly from the lush and enchanting landscapes of 
               Sri Lanka, ensuring authenticity and superior quality in every offering.
@@ -195,45 +195,68 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Certifications Carousel */}
-      <section className="py-16 lg:py-24 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="section-heading">
-            Our Certifications
-          </h2>
-          <p className="text-lg text-deep-brown/70 max-w-3xl mx-auto">
-            Quality assured through rigorous international standards and certifications.
-          </p>
-        </div>
+      {/* Certifications Section */}
+      <section className="py-16 lg:py-24 bg-warm-cream">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="section-heading text-left mb-6">
+                  Premium Quality Standards
+                </h2>
+                <p className="text-lg text-deep-brown/70 leading-relaxed mb-8">
+                  Cinnara Royal Ceylon cinnamon meets the highest international quality standards, ensuring every product delivers authentic taste and exceptional purity. Our certifications validate our commitment to excellence and sustainability.
+                </p>
+              </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {certifications.map((cert, index) => {
-              const Icon = cert.icon;
-              return (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <div className="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow h-full">
-                      <div className={`w-20 h-20 ${cert.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
-                        <Icon className="w-8 h-8" />
-                      </div>
-                      <h3 className="font-display text-xl font-bold text-deep-brown mb-4">{cert.title}</h3>
-                      <p className="text-deep-brown/70 leading-relaxed">{cert.description}</p>
+              {/* Quality Stats */}
+              <div className="grid grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="text-4xl lg:text-5xl font-bold text-deep-brown mb-2">100%</div>
+                  <div className="text-deep-brown/70 font-medium">Organic</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl lg:text-5xl font-bold text-deep-brown mb-2">50+</div>
+                  <div className="text-deep-brown/70 font-medium">Years Heritage</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl lg:text-5xl font-bold text-deep-brown mb-2">5</div>
+                  <div className="text-deep-brown/70 font-medium">Certifications</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Certification Card */}
+            <div className="flex justify-center">
+              <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+                <div className="text-center space-y-6">
+                  {/* Certification Badge */}
+                  <div className="w-20 h-20 bg-warm-brown rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                      <div className="w-4 h-4 bg-warm-brown rounded-full"></div>
                     </div>
                   </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
-        </Carousel>
+
+                  <div>
+                    <h3 className="font-display text-2xl font-bold text-deep-brown mb-4">
+                      Ceylon Cinnamon Authenticity
+                    </h3>
+                    <p className="text-deep-brown/70 leading-relaxed mb-6">
+                      Certified authentic Ceylon cinnamon by the Sri Lanka Export Development Board, guaranteeing true Cinnamomum verum.
+                    </p>
+                  </div>
+
+                  {/* Certificate Details */}
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                    <span className="text-deep-brown/70 font-medium">Sri Lanka EDB</span>
+                    <span className="text-deep-brown/70 font-medium">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       {/* Image Gallery Preview */}
       <section className="py-16 lg:py-24 bg-soft-cream">
