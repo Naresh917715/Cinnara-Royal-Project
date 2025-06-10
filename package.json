@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://username.github.io/Cinnara-Royal-Project",
+  "homepage": "https://naresh917715.github.io/Cinnara-Royal-Project/",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
     "start": "cross-env NODE_ENV=production node dist/index.js",
