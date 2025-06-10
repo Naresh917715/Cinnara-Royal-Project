@@ -221,13 +221,14 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <ProductCard
-                key={index}
-                title={product.title}
-                description={product.description}
-                image={product.image}
-                onClick={() => console.log(`Opening ${product.title} page`)}
-              />
+              <div key={`product-${product.title}-${index}`} className="w-full">
+                <ProductCard
+                  title={product.title}
+                  description={product.description}
+                  image={product.image}
+                  onClick={() => console.log(`Opening ${product.title} page`)}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -66,70 +66,87 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, description, image }) 
 
   const productDetails = getProductDetails(title);
 
-  const toggleExpansion = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLearnMoreClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    setIsExpanded(prev => !prev);
+    console.log(`Toggling ${title}: ${!isExpanded}`);
+    setIsExpanded(prevState => !prevState);
   };
 
   return (
-    <Card className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2">
-      <img 
-        src={image} 
-        alt={title} 
-        className="w-full h-64 object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500" 
-      />
-      <CardContent className="p-6">
-        <h3 className="font-display text-xl font-bold text-deep-brown mb-3">{title}</h3>
-        <p className="text-deep-brown/70 mb-4">{description}</p>
-        
-        <button 
-          onClick={toggleExpansion}
-          className="flex justify-between items-center w-full text-left bg-transparent border-none p-0 cursor-pointer focus:outline-none"
-          type="button"
-        >
-          <span className="text-warm-brown font-semibold">Learn More</span>
-          <ChevronDown 
-            className={`text-warm-brown transition-transform duration-300 w-5 h-5 ${
-              isExpanded ? 'rotate-180' : 'rotate-0'
-            }`} 
+    <div className="w-full">
+      <Card className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+        <div className="relative overflow-hidden">
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105" 
           />
-        </button>
+        </div>
+        
+        <CardContent className="p-6">
+          <h3 className="font-display text-xl font-bold text-deep-brown mb-3">{title}</h3>
+          <p className="text-deep-brown/70 mb-4 leading-relaxed">{description}</p>
+          
+          <button 
+            onClick={handleLearnMoreClick}
+            className="flex justify-between items-center w-full text-left bg-transparent border-none p-0 cursor-pointer focus:outline-none hover:bg-gray-50 rounded-lg px-2 py-1 transition-colors duration-200"
+            type="button"
+            aria-expanded={isExpanded}
+            aria-controls={`product-details-${title.replace(/\s+/g, '-').toLowerCase()}`}
+          >
+            <span className="text-warm-brown font-semibold">Learn More</span>
+            <ChevronDown 
+              className={`text-warm-brown transition-transform duration-300 w-5 h-5 ${
+                isExpanded ? 'rotate-180' : 'rotate-0'
+              }`} 
+            />
+          </button>
 
-        <div 
-          className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            isExpanded ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="border-t border-gray-200 pt-4 space-y-4">
-            <div>
-              <h4 className="font-semibold text-deep-brown mb-2">Key Features</h4>
-              <div className="space-y-2">
-                {productDetails.features.map((feature, index) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div key={`feature-${index}`} className="flex items-center space-x-2">
-                      <Icon className="text-warm-brown w-4 h-4" />
-                      <span className="text-sm text-deep-brown/80">{feature.text}</span>
-                    </div>
-                  );
-                })}
+          <div 
+            id={`product-details-${title.replace(/\s+/g, '-').toLowerCase()}`}
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
+              isExpanded 
+                ? 'max-h-screen opacity-100 mt-4' 
+                : 'max-h-0 opacity-0 mt-0'
+            }`}
+            style={{ 
+              maxHeight: isExpanded ? '1000px' : '0px',
+              transition: 'max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out'
+            }}
+          >
+            <div className="border-t border-gray-200 pt-4 space-y-4">
+              <div>
+                <h4 className="font-semibold text-deep-brown mb-3 text-lg">Key Features</h4>
+                <div className="space-y-3">
+                  {productDetails.features.map((feature, index) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div key={`${title}-feature-${index}`} className="flex items-center space-x-3">
+                        <div className="flex-shrink-0">
+                          <Icon className="text-warm-brown w-5 h-5" />
+                        </div>
+                        <span className="text-sm text-deep-brown/80 leading-relaxed">{feature.text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-deep-brown mb-2 text-lg">Specifications</h4>
+                <p className="text-sm text-deep-brown/70 leading-relaxed">{productDetails.specifications}</p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-deep-brown mb-2 text-lg">Uses & Benefits</h4>
+                <p className="text-sm text-deep-brown/70 leading-relaxed">{productDetails.uses}</p>
               </div>
             </div>
-            
-            <div>
-              <h4 className="font-semibold text-deep-brown mb-2">Specifications</h4>
-              <p className="text-sm text-deep-brown/70">{productDetails.specifications}</p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-deep-brown mb-2">Uses & Benefits</h4>
-              <p className="text-sm text-deep-brown/70">{productDetails.uses}</p>
-            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
