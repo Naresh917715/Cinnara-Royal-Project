@@ -37,12 +37,17 @@ export const PRODUCTS = [
   {
     title: "Ceylon Cinnamon Sticks",
     description: "Hand-harvested true cinnamon quills with delicate sweetness and paper-thin texture.",
-    image: "https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "../../src/assets/productSticks.jpeg"
   },
   {
     title: "Ceylon Cinnamon Powder",
     description: "Finely ground pure Ceylon cinnamon perfect for baking and culinary excellence.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "../../src/assets/productPowder.jpeg"
+  },
+  {
+    title: "Cinnamon Oil Extract",
+    description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use.",
+    image: "../../src/assets/productOil.jpeg"
   },
   {
     title: "Ceylon Cinnamon Soap",
@@ -54,9 +59,5 @@ export const PRODUCTS = [
     description: "Premium tea blend enhanced with authentic Ceylon cinnamon for wellness and flavor.",
     image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
   },
-  {
-    title: "Cinnamon Oil Extract",
-    description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use.",
-    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-  }
+  
 ];

@@ -80,7 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, description, image }) 
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105" 
+            className="w-full h-64 transition-transform duration-300 hover:scale-105" 
           />
         </div>
         

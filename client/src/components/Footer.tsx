@@ -37,10 +37,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Youtube, href: "#", label: "YouTube" },
+    { icon: Facebook, href: "https://www.facebook.com/share/16nnA8ihED", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/cinnara_royal?igsh=bG54N2JoN25xYjA1", label: "Instagram" },
+    // { icon: Linkedin, href: "#", label: "LinkedIn" },
+    // { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   return (

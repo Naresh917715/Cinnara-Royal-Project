@@ -123,15 +123,18 @@ const Home = () => {
 
           {/* Product Display */}
           <div className="flex justify-center items-center space-x-2 sm:space-x-4 lg:space-x-8 mb-8 sm:mb-12">
-            <div className="transform rotate-12 hover:rotate-6 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
+            <img src="../../src/assets/theme.jpeg" alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" style={{width: "max-content"}} />
+
+
+            {/* <div className="transform rotate-12 hover:rotate-6 transition-transform duration-300">
+              <img src="../../src/assets/productSticks.jpeg" alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
             </div>
             <div className="transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Ceylon Cinnamon Powder" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-cover rounded-full shadow-lg border-4 border-white" />
+              <img src="../../src/assets/productPowder.jpeg" alt="Ceylon Cinnamon Powder" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-cover rounded-full shadow-lg border-4 border-white" />
             </div>
             <div className="transform rotate-6 hover:rotate-3 transition-transform duration-300">
-              <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=150" alt="Cinnamon Tea" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
-            </div>
+              <img src="../../src/assets/oil.jpeg" alt="Cinnamon Tea" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" />
+            </div> */}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

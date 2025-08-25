@@ -6,7 +6,7 @@ const Products = () => {
     {
       title: "Ceylon Cinnamon Sticks",
       description: "Our premium Ceylon cinnamon sticks are hand-harvested from the finest cinnamon trees in Sri Lanka. Each quill features the characteristic paper-thin layers and sweet, delicate flavor that makes Ceylon cinnamon the world's most prized variety.",
-      image: "https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600",
+      image: "../../src/assets/productSticks.jpeg", 
       features: [
         { icon: Leaf, text: "100% Pure Ceylon Cinnamon" },
         { icon: HandHelping, text: "Hand-harvested & Artisanally Processed" },
@@ -17,13 +17,24 @@ const Products = () => {
     {
       title: "Ceylon Cinnamon Powder",
       description: "Finely ground from pure Ceylon cinnamon bark, our powder maintains all the natural oils and compounds that make Ceylon cinnamon exceptional. Perfect for baking, cooking, and wellness applications.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600",
+      image: "../../src/assets/productPowder.jpeg",
       features: [
         { icon: Utensils, text: "Finely Ground to Perfection" },
         { icon: Heart, text: "Rich in Antioxidants" },
         { icon: Utensils, text: "Perfect for Culinary Use" }
       ],
       reverse: true
+    },
+    {
+      title: "Cinnamon Oil Extract",
+      description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use. Our oil maintains the full spectrum of beneficial compounds found in authentic Ceylon cinnamon.",
+      image: "../../src/assets/productOil.jpeg",  
+      features: [
+        { icon: Bath, text: "Therapeutic Grade Quality" },
+        { icon: Leaf, text: "Pure Essential Oil" },
+        { icon: Heart, text: "Aromatherapy Benefits" }
+      ],
+      reverse: false
     },
     {
       title: "Ceylon Cinnamon Soap",
@@ -47,17 +58,7 @@ const Products = () => {
       ],
       reverse: true
     },
-    {
-      title: "Cinnamon Oil Extract",
-      description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use. Our oil maintains the full spectrum of beneficial compounds found in authentic Ceylon cinnamon.",
-      image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600",
-      features: [
-        { icon: Bath, text: "Therapeutic Grade Quality" },
-        { icon: Leaf, text: "Pure Essential Oil" },
-        { icon: Heart, text: "Aromatherapy Benefits" }
-      ],
-      reverse: false
-    }
+    
   ];
 
   return (
