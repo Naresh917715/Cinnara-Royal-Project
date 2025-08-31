@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import YouTubePopup from "@/components/YouTubePopup";
 import { PRODUCTS } from "@/constants";
 import cinnaraLogo from "../../src/assets/cinnara.png";
+import theme from "../../src/assets/theme.jpeg"
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -124,7 +125,7 @@ const Home = () => {
 
           {/* Product Display */}
           <div className="flex justify-center items-center space-x-2 sm:space-x-4 lg:space-x-8 mb-8 sm:mb-12">
-            <img src="../../src/assets/theme.jpeg" alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" style={{width: "max-content"}} />
+            <img src={theme} alt="Ceylon Cinnamon Sticks" className="w-12 h-18 sm:w-16 sm:h-24 lg:w-24 lg:h-36 object-cover rounded-lg shadow-lg" style={{width: "max-content"}} />
 
 
             {/* <div className="transform rotate-12 hover:rotate-6 transition-transform duration-300">
