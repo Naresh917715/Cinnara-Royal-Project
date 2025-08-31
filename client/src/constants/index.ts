@@ -1,3 +1,6 @@
+import productSticks from "../../src/assets/productSticks.jpeg";
+import productOil from "../../src/assets/productOil.jpeg";
+import productPowder from "../../src/assets/productPowder.jpeg";
 
 export const CONTACT_INFO = {
   headOffice: {
@@ -37,17 +40,17 @@ export const PRODUCTS = [
   {
     title: "Ceylon Cinnamon Sticks",
     description: "Hand-harvested true cinnamon quills with delicate sweetness and paper-thin texture.",
-    image: "../../src/assets/productSticks.jpeg"
+    image: productSticks
   },
   {
     title: "Ceylon Cinnamon Powder",
     description: "Finely ground pure Ceylon cinnamon perfect for baking and culinary excellence.",
-    image: "../../src/assets/productPowder.jpeg"
+    image: productPowder
   },
   {
     title: "Cinnamon Oil Extract",
     description: "Pure essential oil extracted from Ceylon cinnamon for therapeutic and aromatic use.",
-    image: "../../src/assets/productOil.jpeg"
+    image: productOil
   },
   {
     title: "Ceylon Cinnamon Soap",

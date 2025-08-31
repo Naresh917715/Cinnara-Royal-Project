@@ -6,6 +6,7 @@ import FAQ from "@/components/FAQ";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import YouTubePopup from "@/components/YouTubePopup";
 import { PRODUCTS } from "@/constants";
+import cinnaraLogo from "../../src/assets/cinnara.png";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -100,7 +101,7 @@ const Home = () => {
             <div className="relative">
               <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-dull-yellow overflow-hidden">
                 <img 
-                  src='/cinnara.png' 
+                  src={cinnaraLogo}
                   alt="Ceylon Cinnamon Sticks" 
                   className="w-full h-full object-cover rounded-full"
                 />
